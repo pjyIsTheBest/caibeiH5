@@ -1,18 +1,40 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="home">
+    <div class="body">
+      <transition name="move" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </div>
+    <TabBottom></TabBottom>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import TabBottom from "@/components/TheTabBottom";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
+    TabBottom
+  }
+};
+</script>
+<style lang="scss" scoped>
+#home {
+  width: 100%;
+  height: 100%;
+  .body {
+    width: 100%;
+    height: calc(100% - 5rem);
+    background-color: #fff;
+    overflow-y: scroll;
+  }
+  .move-enter,
+  .move-leave {
+    transform: translateX(100%);
+  }
+  .move-enter-active,
+  .move-leave-active {
+    transition: all 0.25s;
   }
 }
-</script>
+</style>
