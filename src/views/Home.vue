@@ -5,7 +5,7 @@
         <router-view></router-view>
       </transition>
     </div>
-    <TabBottom></TabBottom>
+    <TabBottom :nav="tabNav" :active="active"></TabBottom>
   </div>
 </template>
 
@@ -15,6 +15,54 @@ export default {
   name: "Home",
   components: {
     TabBottom
+  },
+  data() {
+    return {
+      active: 0,
+      tabNav: [
+        {
+          name: "首页",
+          path: "/Home/Index"
+        },
+        {
+          name: "发现",
+          path: "/Home/Find"
+        },
+        {
+          name: "我的",
+          path: "/Home/Account"
+        }
+      ]
+    };
+  },
+  methods: {
+    activeItem(name) {
+      switch (name) {
+        case "Index":
+          this.active = 0;
+          break;
+        case "Find":
+          this.active = 1;
+          break;
+        case "Account":
+          this.active = 2;
+          break;
+        default:
+          this.active = 3;
+          break;
+      }
+    }
+  },
+
+  created() {
+    let name = this.$router.currentRoute.name;
+    this.activeItem(name);
+  },
+
+  watch: {
+    $route(to) {
+      this.activeItem(to.name);
+    }
   }
 };
 </script>
@@ -28,13 +76,11 @@ export default {
     background-color: #fff;
     overflow-y: scroll;
   }
-  .move-enter,
-  .move-leave {
+  .move-entere {
     transform: translateX(100%);
   }
-  .move-enter-active,
-  .move-leave-active {
-    transition: all 0.25s;
+  .move-enter-active {
+    transition: all 0.5s;
   }
 }
 </style>

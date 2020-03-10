@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition name="move" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -12,5 +14,10 @@
   position: relative;
   color: #333;
 }
-
+.move-enter {
+  transform: translateX(100%);
+}
+.move-enter-active {
+  transition: all 0.5s;
+}
 </style>

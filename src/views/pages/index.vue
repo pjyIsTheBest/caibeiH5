@@ -12,7 +12,7 @@
     </div>
     <div class="card">
       <img src="../../assets/img/2.png" alt class="cardHead" />
-      <div class="cardBody">
+      <div class="cardBody" @click="goProject">
         <p class="projectName">001项目-项目名称</p>
         <div class="progressContainer">
           <p>进度：79%</p>
@@ -65,7 +65,11 @@ export default {
       ]
     };
   },
-  methods: {},
+  methods: {
+      goProject(){
+          this.$router.push({path:'/Project/05'})
+      }
+  },
   created() {}
 };
 </script>
@@ -73,7 +77,7 @@ export default {
 <style lang='scss' scoped>
 #Index {
   width: 100%;
-  padding:5rem 0 2rem;
+  padding:5rem 0 0;
 }
 .logo {
   display: inline-block;
@@ -116,8 +120,8 @@ export default {
 .card {
   width: 32rem;
   height: 32rem;
-  box-shadow: 0 0 2rem #ddd;
-  margin: 1.75rem auto;
+  box-shadow: 0 0 2rem #999;
+  margin: 5rem auto;
   border-radius: 1rem;
   overflow: hidden;
   .cardHead {

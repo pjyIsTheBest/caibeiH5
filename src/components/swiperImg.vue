@@ -5,7 +5,9 @@
         v-for="(slide, index) in swiperSlides"
         :key="index"
         :style="{background:slide.color}"
-      ></swiper-slide>
+      >
+        <img v-if="slide.url" :src="slide.url" alt />
+      </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
@@ -15,32 +17,45 @@
 export default {
   name: "swiperImg",
   data() {
-    return {
-      swiperOption: {
-        autoplay: true,
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination"
-        }
-      },
-      swiperSlides: [
-        {
-          color: "#f00"
-        },
-        {
-          color: "#0f0"
-        },
-        {
-          color: "#00f"
-        }
-      ]
-    };
+    return {};
+  },
+  props: {
+    swiperSlides: {
+      type: Array,
+      default: () => {
+        return [
+          {
+            color: "#f00"
+          },
+          {
+            color: "#0f0"
+          },
+          {
+            color: "#00f"
+          }
+        ];
+      }
+    },
+    swiperOption: {
+      type: Object,
+      default: () => {
+        return {
+          autoplay: {
+              disableOnInteraction: false//触碰后继续自动滚动
+          },
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination"
+          }
+        };
+      }
+    }
   },
   mounted() {}
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .swiperImg {
   width: 100%;
   height: 15rem;
@@ -48,6 +63,10 @@ export default {
   .swiper-slide {
     width: 100%;
     height: 15rem;
+    img {
+      display: block;
+      width: 100%;
+    }
   }
   .swiper-pagination-bullet {
     background-color: #dce1e5;
@@ -55,7 +74,7 @@ export default {
   }
   .swiper-pagination-bullet-active {
     background-color: #fff;
-    opacity: 0.7;
+    opacity: 1;
   }
 }
 </style>

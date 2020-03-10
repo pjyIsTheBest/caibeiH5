@@ -10,52 +10,60 @@
       >{{item.name}}</div>
     </nav>
     <div class="projectList">
-      <div class="projectItem" v-for="(item,index) in project" :key="index">
-        <div class="mark" v-if="item.status=='03'">
-          <img src="../../assets/img/common-icon/03.png" alt class="statusImg2" />
-        </div>
-        <img src="../../assets/img/1.png" alt class="leftImg" />
+      <TheScroller :refreshStart="refreshStart" :loadStart="loadStart" :noData="noData">
+        <div
+          class="projectItem"
+          v-for="(item,index) in project"
+          :key="index"
+          @click="toProjectDetails(item)"
+        >
+          <div class="mark" v-if="item.status=='03'">
+            <img src="../../assets/img/common-icon/03.png" alt class="statusImg2" />
+          </div>
+          <img src="../../assets/img/1.png" alt class="leftImg" />
 
-        <img
-          src="../../assets/img/common-icon/01.png"
-          v-if="item.status=='01'"
-          alt
-          class="statusImg"
-        />
-        <img
-          src="../../assets/img/common-icon/02.png"
-          v-else-if="item.status=='02'"
-          alt
-          class="statusImg"
-        />
+          <img
+            src="../../assets/img/common-icon/01.png"
+            v-if="item.status=='01'"
+            alt
+            class="statusImg"
+          />
+          <img
+            src="../../assets/img/common-icon/02.png"
+            v-else-if="item.status=='02'"
+            alt
+            class="statusImg"
+          />
 
-        <div class="rightContainer">
-          <p class="projectName">{{item.name}}</p>
-          <p class="Amount">
-            <font>{{item.amount}}万</font>
-            <br />
-            <span>目标金额</span>
-          </p>
-          <div class="progressContainer">
-            <p>进度：{{item.progress}}</p>
-            <div>
-              <span :style="{width:item.progress}"></span>
+          <div class="rightContainer">
+            <p class="projectName">{{item.name}}</p>
+            <p class="Amount">
+              <font>{{item.amount}}万</font>
+              <br />
+              <span>目标金额</span>
+            </p>
+            <div class="progressContainer">
+              <p>进度：{{item.progress}}</p>
+              <div>
+                <span :style="{width:item.progress}"></span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </TheScroller>
     </div>
   </div>
 </template>
 
 <script>
 import TheHeader from "@/components/TheHeader";
-
+import TheScroller from "@/components/TheScroller";
 export default {
   name: "",
-  components: { TheHeader },
+  components: { TheHeader, TheScroller },
   data() {
     return {
+        noData:false,
       active: "all",
       nav: [
         { name: "全部项目", status: "all" },
@@ -64,40 +72,47 @@ export default {
       ],
       project: [
         {
-          name: "001 项目-项目名称",
+          name:
+            "001 项目-项目名称项目名称项目名称项目名称项目名称项目名称项目名称",
           amount: "3000",
           progress: "79%",
-          status: "01"
+          status: "01",
+          id: "001"
         },
         {
           name: "001 项目-项目名称",
           amount: "3000",
           progress: "79%",
-          status: "02"
+          status: "02",
+          id: "002"
         },
         {
           name: "001 项目-项目名称",
           amount: "3000",
           progress: "100%",
-          status: "03"
+          status: "03",
+          id: "003"
         },
         {
           name: "001 项目-项目名称",
           amount: "3000",
           progress: "79%",
-          status: "01"
+          status: "01",
+          id: "004"
         },
         {
           name: "001 项目-项目名称",
           amount: "3000",
           progress: "79%",
-          status: "01"
+          status: "01",
+          id: "005"
         },
         {
           name: "001 项目-项目名称",
           amount: "3000",
           progress: "79%",
-          status: "01"
+          status: "01",
+          id: "006"
         }
       ]
     };
@@ -111,6 +126,24 @@ export default {
     },
     onInfinite() {
       console.log("onInfinite");
+    },
+    toProjectDetails(item) {
+      if (item.status == "03") {
+        return false;
+      }
+      this.$router.push({ path: "/Project/" + item.id });
+    },
+    refreshStart(done) {
+      setTimeout(() => {
+        // 这里写 ajax 业务请求，在数据请求到后执行 done() 关闭动画
+        done();
+      }, 1600);
+    },
+    loadStart(done) {
+      setTimeout(() => {
+        // 这里写 ajax 业务请求，在数据请求到后执行 done() 关闭动画
+        done();
+      }, 1600);
     }
   },
   created() {}
@@ -146,7 +179,6 @@ export default {
   .projectList {
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
     .projectItem {
       width: 100%;
       height: 13.5rem;
@@ -184,18 +216,19 @@ export default {
         width: 13rem;
         height: 10rem;
         float: left;
+        margin-right: 2rem;
       }
       .rightContainer {
         width: 20rem;
         height: 10rem;
-        float: right;
+        float: left;
         margin-right: 2rem;
         text-align: left;
         .projectName {
           width: 100%;
-          height: 3.5rem;
+          height: 3rem;
           font-size: 1.5rem;
-          line-height: 3.5rem;
+          line-height: 3rem;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -203,7 +236,7 @@ export default {
         .Amount {
           width: 100%;
           height: 3.8rem;
-          margin-bottom: 0.5rem;
+          margin-bottom: 1rem;
           font {
             font-size: 1.5rem;
             color: #ff7e00;

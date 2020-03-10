@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Index from '../views/pages/index'
+import Account from '../views/pages/myAccount.vue'
+import Find from '../views/pages/find.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -17,17 +19,28 @@ const routes = [{
             {
                 path: '/Home/Account',
                 name: 'Account',
-                component: () =>
-                    import ('../views/pages/myAccount.vue')
+                component: Account
             },
             {
                 path: '/Home/Find',
                 name: 'Find',
-                component: () =>
-                    import ('../views/pages/find.vue')
+                component: Find
             }
         ]
 
+    },
+    {
+        path: '/Setting',
+        name: 'Setting',
+        component: () =>
+            import ('../views/pages/setting.vue')
+    },
+    {
+        path: '/Project/:ProjectId',
+        name: 'Project',
+        props: true,
+        component: () =>
+            import ('../views/pages/project.vue')
     },
     {
         path: '*',

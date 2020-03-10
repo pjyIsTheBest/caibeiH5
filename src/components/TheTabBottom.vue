@@ -3,7 +3,7 @@
     <div
       v-for="(item,index) in nav"
       :key="index"
-      :class="active==index?'tabItem activeItem'+index:'tabItem normalItem'+index"
+      :class="isActived==index?'tabItem activeItem'+index:'tabItem normalItem'+index"
       @click="Link(item,index)"
     >
       <span>{{item.name}}</span>
@@ -17,44 +17,45 @@ export default {
   components: {},
   data() {
     return {
-      active: 0,
-      nav: [
-        {
-          name: "首页",
-          path: "/Home/Index"
-        },
-        {
-          name: "发现",
-          path: "/Home/Find"
-        },
-        {
-          name: "我的",
-          path: "/Home/Account"
-        }
-      ]
+      
     };
   },
+  computed:{
+      isActived(){
+          return this.active
+      }
+  },
+  props: {
+    active: {
+      type: Number,
+      default: 0
+    },
+    nav: {
+      type: Array,
+      default: () => {
+        return [
+          {
+            name: "首页",
+            path: "/Home/Index"
+          },
+          {
+            name: "发现",
+            path: "/Home/Find"
+          },
+          {
+            name: "我的",
+            path: "/Home/Account"
+          }
+        ];
+      }
+    }
+  },
   methods: {
-    Link(item, index) {
-      this.active = index;
+    Link(item) {
       this.$router.push({ path: item.path });
     }
   },
   created() {},
-  watch: {
-    $route: {
-      handler: function(to) {
-        // 对路由变化作出响应...
-        let p = to.path;
-        this.nav.findIndex((value, index) => {
-          if (value.path == p) {
-            this.active = index;
-          }
-        });
-      },
-      deep: true
-    }
-  }
 };
 </script>
 

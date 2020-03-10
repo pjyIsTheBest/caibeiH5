@@ -33,7 +33,7 @@ export default {
   },
   methods: {
       goBack(){
-          history.go(-1)
+          window.history.back();
       }
   },
   created() {}
