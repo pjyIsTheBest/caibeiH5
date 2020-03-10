@@ -43,6 +43,13 @@ const routes = [{
             import ('../views/pages/project.vue')
     },
     {
+        path: '/Introducation/:ProjectId',
+        name: 'Introducation',
+        props: true,
+        component: () =>
+            import ('../views/pages/projectIntroducation')
+    },
+    {
         path: '*',
         component: () =>
             import ('../views/404.vue')

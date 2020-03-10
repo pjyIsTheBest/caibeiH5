@@ -2,7 +2,7 @@
   <div id="theHeader" :style="{background:backGroundColor}">
     <span v-if="showBackBtn" class="backIcon" @click="goBack"></span>
     <slot></slot>
-    <div v-if="showRightBtn" @click="$emit('RightBtnClick')" v-html="RightBtn" class="rightBtn"></div>
+    <slot name="rightBtn"></slot>
   </div>
 </template>
 
@@ -15,14 +15,8 @@ export default {
       type: Boolean,
       default: false
     },
-    showRightBtn: {
-      type: Boolean,
-      default: false
-    },
-    RightBtn: {
-      type: String,
-      default: ""
-    },
+   
+    
     backGroundColor: {
       type: String,
       default: "#fff"
@@ -32,9 +26,9 @@ export default {
     return {};
   },
   methods: {
-      goBack(){
-          window.history.back();
-      }
+    goBack() {
+      window.history.back();
+    }
   },
   created() {}
 };
@@ -68,12 +62,6 @@ export default {
     background-repeat: no-repeat;
     background-image: url(../assets/img/common-icon/back.png);
   }
-  .rightBtn {
-    width: 5rem;
-    height: 5rem;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+  
 }
 </style>

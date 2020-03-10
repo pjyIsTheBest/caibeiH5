@@ -27,7 +27,10 @@
       </div>
     </div>
     <div class="tabNav">
-      <div class="item" v-for="(item,index) in nav" :key="index">{{item.name}}</div>
+      <router-link class="item" :to="'/Introducation/'+ProjectId">项目介绍</router-link>
+      <router-link class="item" :to="'/Introducation/'+ProjectId">项目方案</router-link>
+      <router-link class="item" :to="'/Introducation/'+ProjectId">信息披露</router-link>
+      <router-link class="item" :to="'/Introducation/'+ProjectId">风险提示</router-link>
     </div>
     <button class="rengou" v-if="statue=='01'">立 即 认 购</button>
     <button class="yuyue" v-else>立 即 预 约</button>
@@ -48,7 +51,7 @@ export default {
         { name: "信息披露" },
         { name: "风险提示" }
       ],
-      statue:'01'
+      statue: "01"
     };
   },
   props: ["ProjectId"],
@@ -136,6 +139,8 @@ export default {
     width: 100%;
     padding: 0 0.6rem;
     .item {
+      display: block;
+
       width: 100%;
       height: 4rem;
       padding: 1rem 3% 0 3%;
