@@ -63,7 +63,7 @@ export default {
     }
   }
   .toRight {
-    background-image: url(../../assets/img/common-icon/toRight.png);
+    background-image: url(../../../assets/img/common-icon/toRight.png);
     background-position: right center;
     background-size: 1.6rem;
     background-repeat: no-repeat;

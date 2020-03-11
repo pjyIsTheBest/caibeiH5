@@ -68,7 +68,7 @@ export default {
   flex-wrap: nowrap;
   justify-content: space-around;
   .tabItem {
-    width: 2.5rem;
+    width: 8rem;
     height: 4rem;
     margin: 0.5rem 0;
     font-size: 1.2rem;

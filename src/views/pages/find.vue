@@ -128,9 +128,7 @@ export default {
       console.log("onInfinite");
     },
     toProjectDetails(item) {
-      if (item.status == "03") {
-        return false;
-      }
+      
       this.$router.push({ path: "/Project/" + item.id });
     },
     refreshStart(done) {

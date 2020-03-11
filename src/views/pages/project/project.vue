@@ -28,12 +28,13 @@
     </div>
     <div class="tabNav">
       <router-link class="item" :to="'/Introducation/'+ProjectId">项目介绍</router-link>
-      <router-link class="item" :to="'/Introducation/'+ProjectId">项目方案</router-link>
-      <router-link class="item" :to="'/Introducation/'+ProjectId">信息披露</router-link>
-      <router-link class="item" :to="'/Introducation/'+ProjectId">风险提示</router-link>
+      <router-link class="item" :to="'/Plan/'+ProjectId">项目方案</router-link>
+      <router-link class="item" :to="'/Info/'+ProjectId">信息披露</router-link>
+      <router-link class="item" :to="'/Warning/'+ProjectId">风险提示</router-link>
+      <router-link class="item" v-if="status=='03'" to="">贷后管理</router-link>
     </div>
-    <button class="rengou" v-if="statue=='01'">立 即 认 购</button>
-    <button class="yuyue" v-else>立 即 预 约</button>
+    <router-link class="btn rengou" v-if="status=='02'" :to="'/payment/'+ProjectId+'/'+status">立 即 认 购</router-link>
+    <router-link class="btn yuyue" v-else :to="'/payment/'+ProjectId+'/'+status">立 即 预 约</router-link>
   </div>
 </template>
 
@@ -51,7 +52,7 @@ export default {
         { name: "信息披露" },
         { name: "风险提示" }
       ],
-      statue: "01"
+      status: "01" //01 预约 02 认购
     };
   },
   props: ["ProjectId"],
@@ -147,32 +148,30 @@ export default {
       line-height: 3rem;
       text-align: left;
       border-bottom: 2px solid #f8f8f8;
-      background-image: url(../../assets/img/common-icon/toRight.png);
+      background-image: url(../../../assets/img/common-icon/toRight.png);
       background-position: 97% 1.8rem;
       background-size: 1.4rem;
       background-repeat: no-repeat;
       font-size: 1.3rem;
     }
   }
-  .rengou {
+  .btn {
+    display: block;
     width: 100%;
     height: 5rem;
-    background-color: #fe4304;
+    line-height: 5rem;
+    text-align: center;
     color: #fff;
     font-size: 1.5rem;
     position: fixed;
     bottom: 0;
     left: 0;
   }
+  .rengou {
+    background-color: #fe4304;
+  }
   .yuyue {
-    width: 100%;
-    height: 5rem;
     background-color: #ff7e00;
-    color: #fff;
-    font-size: 1.5rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
   }
 }
 </style>
