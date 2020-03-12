@@ -2,13 +2,14 @@
   <div id="setting">
     <TheHeader :showBackBtn="true">个人设置</TheHeader>
     <div class="tabNav">
-      <div
+      <router-link
         v-for="(item,index) in nav"
         :key="index"
         :class="item.status=='logout'?'item':'item toRight'"
+        :to="item.path"
       >
         <span>{{item.name}}</span>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -21,9 +22,9 @@ export default {
   data() {
     return {
       nav: [
-        { name: "风险测评" },
-        { name: "修改登录密码" },
-        { name: "退出登录", status: "logout" }
+        { name: "风险测评",path:'' },
+        { name: "修改登录密码" ,path:'/ResetPassword'},
+        { name: "退出登录", status: "logout",path:'/Login' }
       ]
     };
   },
@@ -33,14 +34,15 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-#setting{
-    width: 100%;
-    padding: 6rem 0 0 0;
+#setting {
+  width: 100%;
+  padding: 6rem 0 0 0;
 }
 .tabNav {
   width: 100%;
   padding: 0 0.5rem;
   .item {
+    display: block;
     width: 100%;
     padding: 0 0.5rem;
     height: 4rem;

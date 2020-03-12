@@ -121,7 +121,7 @@ export default {
   width: 32rem;
   height: 32rem;
   box-shadow: 0 0 2rem #999;
-  margin: 5rem auto;
+  margin: 1.75rem auto;
   border-radius: 1rem;
   overflow: hidden;
   .cardHead {

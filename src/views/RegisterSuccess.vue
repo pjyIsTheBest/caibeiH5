@@ -1,5 +1,5 @@
 <template>
-  <div id="Login">
+  <div id="RegisterSuccess">
     <TheHeader :showBackBtn="true">
       <span>注册</span>
       <router-link name="rightBtn" class="rightBtn" to="/">登录</router-link>
@@ -19,7 +19,7 @@
 import TheHeader from "@/components/TheHeader";
 
 export default {
-  name: "Login",
+  name: "RegisterSuccess",
   components: { TheHeader },
   data() {
     return {};
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-#Login {
+#RegisterSuccess {
   width: 100%;
   height: 100%;
   position: relative;

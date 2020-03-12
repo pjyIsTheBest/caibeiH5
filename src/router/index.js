@@ -10,6 +10,10 @@ Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
+        redirect: '/Login',
+    },
+    {
+        path: '/Login',
         name: 'Login',
         component: Login
     },
@@ -52,6 +56,24 @@ const routes = [{
             }
         ]
 
+    },
+    {
+        path: '/MyProject',
+        name: 'MyProject',
+        component: () =>
+            import ('../views/pages/userCenter/myProject.vue')
+    },
+    {
+        path: '/Record',
+        name: 'Record',
+        component: () =>
+            import ('../views/pages/userCenter/record.vue')
+    },
+    {
+        path: '/ResetPassword',
+        name: 'ResetPassword',
+        component: () =>
+            import ('../views/pages/userCenter/resetPassword.vue')
     },
     {
         path: '/Setting',

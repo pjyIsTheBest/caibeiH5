@@ -1,5 +1,5 @@
 <template>
-  <div id="Register">
+  <div id="ForgotPassword">
     <TheHeader :showBackBtn="true">忘记密码</TheHeader>
     <div class="form">
       <div class="form-item">
@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-#Register {
+#ForgotPassword {
   width: 100%;
   height: 100%;
   position: relative;

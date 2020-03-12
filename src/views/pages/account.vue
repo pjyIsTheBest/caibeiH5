@@ -41,16 +41,17 @@
       </div>
     </div>
     <div class="tabNav">
-      <div
+      <a
         v-for="(item,index) in nav"
         :key="index"
         :class="item.status=='notOpen'||item.status=='kefu'?'item':'item toRight'"
-        @click="goNext(item)"
+        :href="item.path"
       >
         <span>{{item.name}}</span>
         <button class="itemBtn" v-if="item.status=='notOpen'">开通存管账户</button>
-        <font v-if="item.status=='kefu'">400-4936-822</font>
-      </div>
+        <font class="kefu" v-if="item.status=='kefu'">400-4936-822</font>
+      </a>
+      
     </div>
   </div>
 </template>
@@ -65,11 +66,11 @@ export default {
       nav: [
         {
           name: "我的项目",
-          path: "/myProject"
+          path: "/MyProject"
         },
         {
           name: "交易记录",
-          path: "/myProject"
+          path: "/Record"
         },
         {
           name: "存管账户",
@@ -82,17 +83,17 @@ export default {
         },
         {
           name: "联系客服",
-          path: "/kefu",
+          path: "tel:400-4936-822",
           status: "kefu"
         }
       ]
     };
   },
   methods: {
-      goNext(i){
-          console.log(i)
-          this.$router.push({path:i.path})
-      }
+    goNext(i) {
+      console.log(i);
+      this.$router.push({ path: i.path });
+    }
   },
   created() {}
 };
@@ -213,6 +214,7 @@ export default {
     width: 100%;
     padding: 0 0.5rem;
     .item {
+      display: block;
       width: 100%;
       padding-right: 5%;
       height: 4rem;
@@ -229,7 +231,7 @@ export default {
         background-color: #fff;
         color: #ff7e00;
       }
-      font {
+      .kefu {
         float: right;
         height: 100%;
       }

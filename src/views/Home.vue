@@ -76,7 +76,7 @@ export default {
     background-color: #fff;
     overflow-y: scroll;
   }
-  .move-entere {
+  .move-enter {
     transform: translateX(100%);
   }
   .move-enter-active {

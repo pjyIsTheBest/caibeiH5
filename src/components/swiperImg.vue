@@ -6,6 +6,7 @@
         :key="index"
         :style="{background:slide.color}"
       >
+      {{'slide'+index}}
         <img v-if="slide.url" :src="slide.url" alt />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>

@@ -1,6 +1,9 @@
 <template>
   <div id="project">
-    <TheHeader :showBackBtn="true">项目名称{{ProjectId}}</TheHeader>
+    <TheHeader :showBackBtn="true">
+      <span>项目名称{{ProjectId}}</span>
+      <a name="rightBtn" class="kefu" href="tel:400-4936-833"></a>
+    </TheHeader>
     <SwiperImg class="swiper"></SwiperImg>
     <p class="projectName">项目名称{{ProjectId}}</p>
     <div class="progressContainer">
@@ -31,9 +34,13 @@
       <router-link class="item" :to="'/Plan/'+ProjectId">项目方案</router-link>
       <router-link class="item" :to="'/Info/'+ProjectId">信息披露</router-link>
       <router-link class="item" :to="'/Warning/'+ProjectId">风险提示</router-link>
-      <router-link class="item" v-if="status=='03'" to="">贷后管理</router-link>
+      <router-link class="item" v-if="status=='03'" to>贷后管理</router-link>
     </div>
-    <router-link class="btn rengou" v-if="status=='02'" :to="'/payment/'+ProjectId+'/'+status">立 即 认 购</router-link>
+    <router-link
+      class="btn rengou"
+      v-if="status=='02'"
+      :to="'/payment/'+ProjectId+'/'+status"
+    >立 即 认 购</router-link>
     <router-link class="btn yuyue" v-else :to="'/payment/'+ProjectId+'/'+status">立 即 预 约</router-link>
   </div>
 </template>
@@ -67,6 +74,17 @@ export default {
   height: 100%;
   padding: 5rem 0;
   overflow-y: scroll;
+  .kefu {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-image: url(../../../assets/img/common-icon/kefu.png);
+    background-position: center;
+    background-size: 2rem;
+    background-repeat: no-repeat;
+  }
   .projectName {
     width: 100%;
     height: 5.8rem;
