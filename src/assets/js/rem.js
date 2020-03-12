@@ -2,7 +2,7 @@
     var docEl = doc.documentElement,
         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
         recalc = function() {
-            var clientWidth = docEl.clientWidth > 375 ? 375 : docEl.clientWidth;
+            var clientWidth = docEl.clientWidth > 450 ? 450 : docEl.clientWidth;
             if (!clientWidth) return;
             docEl.style.fontSize = 10 * (clientWidth / 375) + 'px';
         };

@@ -1,13 +1,7 @@
 <template>
   <div id="Register">
-    <TheHeader :showBackBtn="true">注册</TheHeader>
+    <TheHeader :showBackBtn="true">忘记密码</TheHeader>
     <div class="form">
-      <div class="form-item">
-        <input type="text" class="input name" placeholder="请填写真实姓名" />
-      </div>
-      <div class="form-item">
-        <input type="text" class="input id" placeholder="请填写身份证号" />
-      </div>
       <div class="form-item">
         <input type="text" class="input mobile" placeholder="请输入手机号码" />
       </div>
@@ -23,25 +17,18 @@
       </div>
       <div class="form-item">设置新密码，密码必须为8-20位的数字或字母</div>
       <div class="form-item">
-        <input :type="showPwd?'text':'password'" class="input password" placeholder="请设置密码" />
+        <input :type="showPwd?'text':'password'" class="input password" placeholder="请设置新密码" />
         <button :class="showPwd?'eye eye-open':'eye'" @click="showPwd=!showPwd"></button>
       </div>
       <div class="form-item">
-        <input :type="showconfirmPwd?'text':'password'" class="input password" placeholder="请确认密码" />
+        <input :type="showconfirmPwd?'text':'password'" class="input password" placeholder="请确认新密码" />
         <button
           :class="showconfirmPwd?'eye eye-open':'eye'"
           @click="showconfirmPwd=!showconfirmPwd"
         ></button>
       </div>
-      <div class="form-item">
-        <input type="checkbox" class="checkbox" />
-        <span class="text">
-          我已阅读并同意
-          <a href>《注册协议》</a>
-        </span>
-      </div>
     </div>
-    <button class="btn" v-show="isShow" @click="register">立 即 注 册</button>
+    <button class="btn" v-show="isShow">确 认</button>
   </div>
 </template>
 
@@ -67,9 +54,6 @@ export default {
     },
     randomNum(min, max) {
       return Math.floor(Math.random() * (max - min) + min);
-    },
-    register() {
-      this.$router.push({ name: "RegisterSuccess" });
     }
   },
   created() {},
@@ -116,20 +100,7 @@ export default {
         background-size: 2rem;
         background-repeat: no-repeat;
       }
-      .name {
-        background-image: url(../assets/img/common-icon/person.png);
-      }
-      .name:focus {
-        background-image: url(../assets/img/common-icon/person-focus.png);
-        border-bottom: 1px solid #ff7e00;
-      }
-      .id {
-        background-image: url(../assets/img/common-icon/id.png);
-      }
-      .id:focus {
-        background-image: url(../assets/img/common-icon/id-focus.png);
-        border-bottom: 1px solid #ff7e00;
-      }
+
       .mobile {
         background-image: url(../assets/img/common-icon/mobile.png);
       }
@@ -189,23 +160,6 @@ export default {
       }
       .eye-open {
         background-image: url(../assets/img/common-icon/eye-open.png);
-      }
-      a {
-        color: #ff7e00;
-      }
-      .text {
-        color: #b7b7b7;
-      }
-      .checkbox {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin: 1.5rem 1rem;
-        background-image: url(../assets/img/common-icon/unCheck.png);
-        background-position: center;
-        background-size: 100%;
-      }
-      .checkbox:checked {
-        background-image: url(../assets/img/common-icon/Check.png);
       }
     }
   }
