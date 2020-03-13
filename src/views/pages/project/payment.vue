@@ -155,13 +155,18 @@ export default {
     font-size: 1.3rem;
     line-height: 2rem;
     color: #b7b7b7;
+    padding-left: 2rem;
+    position: relative;
     a {
       color: #ff7e00;
     }
     .checkbox {
-      width: 1.3rem;
-      height: 1.3rem;
-      margin-right: 1rem;
+      position: absolute;
+      left:0;
+      top: 0.3rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      vertical-align: middle;
       background-image: url(../../../assets/img/common-icon/unCheck.png);
       background-position: center;
       background-size: 100%;

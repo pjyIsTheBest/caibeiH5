@@ -33,7 +33,7 @@
           @click="showconfirmPwd=!showconfirmPwd"
         ></button>
       </div>
-      <div class="form-item">
+      <div class="xieyi">
         <input type="checkbox" class="checkbox" />
         <span class="text">
           我已阅读并同意
@@ -99,6 +99,33 @@ export default {
     margin: 0 auto;
     padding: 1rem 4% 0 4%;
     border-top: 0.5rem solid #f8f8f8;
+    .xieyi {
+      width: 100%;
+      margin-top: 1.25rem;
+      line-height: 2rem;
+      padding-left: 3rem;
+      position: relative;
+      a {
+        color: #ff7e00;
+      }
+      .text {
+        color: #b7b7b7;
+      }
+      .checkbox {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        background-image: url(../assets/img/common-icon/unCheck.png);
+        background-position: center;
+        background-size: 100%;
+        position: absolute;
+        left: 0.75rem;
+        top: 0.25rem;
+      }
+      .checkbox:checked {
+        background-image: url(../assets/img/common-icon/Check.png);
+      }
+    }
     .form-item {
       width: 100%;
       height: 4.5rem;
@@ -189,23 +216,6 @@ export default {
       }
       .eye-open {
         background-image: url(../assets/img/common-icon/eye-open.png);
-      }
-      a {
-        color: #ff7e00;
-      }
-      .text {
-        color: #b7b7b7;
-      }
-      .checkbox {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin: 1.5rem 1rem;
-        background-image: url(../assets/img/common-icon/unCheck.png);
-        background-position: center;
-        background-size: 100%;
-      }
-      .checkbox:checked {
-        background-image: url(../assets/img/common-icon/Check.png);
       }
     }
   }
