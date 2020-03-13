@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <button class="cardFoot">立即认购</button>
+      <router-link to="/Project/123" class="cardFoot">立即认购</router-link>
     </div>
   </div>
 </template>
@@ -190,6 +190,9 @@ export default {
     }
   }
   .cardFoot {
+    display: block;
+    text-align: center;
+    line-height: 4rem;
     width: 100%;
     height: 4rem;
     background-color: #ff7e00;

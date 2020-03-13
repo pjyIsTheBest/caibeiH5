@@ -5,6 +5,7 @@ import './registerServiceWorker'
 import './assets/js/rem.js'
 import './plugins/swiper.js'
 import './plugins/popup/index.js'
+import './plugins/datePick.js'
 Vue.config.productionTip = false
 
 new Vue({

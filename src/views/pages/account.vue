@@ -41,17 +41,19 @@
       </div>
     </div>
     <div class="tabNav">
-      <a
+      <router-link
         v-for="(item,index) in nav"
         :key="index"
         :class="item.status=='notOpen'||item.status=='kefu'?'item':'item toRight'"
-        :href="item.path"
+        :to="item.path"
       >
         <span>{{item.name}}</span>
         <button class="itemBtn" v-if="item.status=='notOpen'">开通存管账户</button>
-        <font class="kefu" v-if="item.status=='kefu'">400-4936-822</font>
+      </router-link>
+      <a class="item" href="tel:300-4936-822">
+        <span>联系客服</span>
+        <font class="kefu">400-4936-822</font>
       </a>
-      
     </div>
   </div>
 </template>
@@ -80,11 +82,6 @@ export default {
         {
           name: "个人设置",
           path: "/Setting"
-        },
-        {
-          name: "联系客服",
-          path: "tel:400-4936-822",
-          status: "kefu"
         }
       ]
     };

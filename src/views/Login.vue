@@ -34,7 +34,7 @@
       </template>
     </div>
     <p class="goOther">
-      <a href="/ForgotPassword">忘记密码</a>
+      <router-link to="/ForgotPassword">忘记密码</router-link>
       <font></font>
       <span @click="loginType = !loginType">{{loginType?'短信登录':'密码登录'}}</span>
     </p>

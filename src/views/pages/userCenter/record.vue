@@ -8,51 +8,30 @@
     </div>
 
     <swiper class="container" :options="swiperOption" ref="mySwiper" @slideChange="slideChange">
-      <swiper-slide>取现明细</swiper-slide>
-      <swiper-slide>分红明细</swiper-slide>
+      <swiper-slide>
+        <RechagreWithdraw></RechagreWithdraw>
+      </swiper-slide>
+      <swiper-slide>
+        <Bonus></Bonus>
+      </swiper-slide>
     </swiper>
   </div>
 </template>
 
 <script>
 import TheHeader from "@/components/TheHeader";
+import RechagreWithdraw from "@/components/Record-rechargeWithdraw";
+import Bonus from '@/components/Record-bonus'
+
 export default {
   name: "",
-  components: { TheHeader },
+  components: { TheHeader, RechagreWithdraw ,Bonus},
   data() {
     return {
       swiperOption: {
         autoplay: false
       },
-      status: "0",
-      listData: [
-        /*  {
-          name: "001A-p14243535",
-          date: "2020-03-12",
-          amount: "5353535"
-        },
-        {
-          name: "001A-p14243535",
-          date: "2020-03-12",
-          amount: "5353535"
-        },
-        {
-          name: "001A-p14243535",
-          date: "2020-03-12",
-          amount: "5353535"
-        },
-
-        {
-          name: "001A-p14243535",
-          date: "2020-03-12",
-          amount: "5353535"
-        },
-        {
-          name: "001A-p14243535",
-          date: "2020-03-12",
-          amount: "5353535"
-        } */
-      ]
+      status: "0"
     };
   },
   methods: {
